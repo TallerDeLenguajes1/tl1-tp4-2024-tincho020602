@@ -36,7 +36,7 @@ int generarID(Nodo *inicio){
         {
             aux=aux->Siguiente;
         }
-        
+
         return aux->T.TareaID+1;
     }
     
@@ -57,16 +57,27 @@ Tarea CrearTarea(Nodo *inicio){
     strcpy(Taux.Descripcion,arreglo);
     Taux.Duracion=rand()% 91+10;
 }
-Nodo *CrearNodo();
-Nodo *CrearNodo(){
-    Nodo *aux=(Nodo *)malloc(sizeof(Nodo));
-    aux->T=CrearTarea(aux);
+Nodo *CrearNodo(Tarea datos);
+Nodo *CrearNodo(Tarea datos){
+    Nodo *nuevoNodo=(Nodo *)malloc(sizeof(Nodo));
+    nuevoNodo->T=datos;//guardo los datos cargados
+    nuevoNodo->Siguiente=NULL;
+    return nuevoNodo;
+}
+
+void cargarTarea(Nodo **inicio);
+void cargarTarea(Nodo **inicio){
+    int bandera;
+    do{
+        Tarea Tnueva=CrearTarea(*inicio);
+        Nodo *nuevoNodo=CrearNodo(Tnueva);
+    }
 }
 
 
 int main(){
-    Nodo *pendietes;
-    pendietes=CrearListaVacia();
-
+    Nodo *pendientes;
+    pendientes=CrearListaVacia();
+    cargarTarea(&pendientes);
     return 0;
 }
