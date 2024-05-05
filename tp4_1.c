@@ -71,7 +71,7 @@ void cargarTarea(Nodo **inicio){
     do{
         Tarea Tnueva=CrearTarea(*inicio);
         Nodo *nuevoNodo=CrearNodo(Tnueva);
-    }
+    }while ()
 }
 
 
