@@ -65,13 +65,28 @@ Nodo *CrearNodo(Tarea datos){
     return nuevoNodo;
 }
 
+void insertarUltimo(Nodo **inicio,Nodo *nuevoNodo);
+void insertarUltimo(Nodo **inicio,Nodo *nuevoNodo){
+    nuevoNodo->Siguiente=*inicio;
+    *inicio=nuevoNodo;
+}
+
 void cargarTarea(Nodo **inicio);
 void cargarTarea(Nodo **inicio){
     int bandera;
     do{
         Tarea Tnueva=CrearTarea(*inicio);
         Nodo *nuevoNodo=CrearNodo(Tnueva);
-    }while ()
+        if (*inicio==NULL)//compruebo que inicio no este vacio
+        {
+            *inicio=nuevoNodo;//si es null, apunto al nuevo nodo
+        }else
+        {
+            insertarUltimo(*inicio,nuevoNodo);
+        }
+        printf("\nDesea cargar otra tarea? Ingrese 1:si o 0:no");
+        scanf("%d",&bandera);//se repetira el bucle siempre que si quiera cargar mas datos
+    }while (bandera!=1);
 }
 
 
